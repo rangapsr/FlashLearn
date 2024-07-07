@@ -114,7 +114,7 @@ void _stopTimer() {
 
 class MyAppState extends ChangeNotifier {
   static var current = items[index];
-  static var language;
+  static var language = 1;
 
   void _startTimer(BuildContext context) {
     timerRunning = true;
@@ -443,15 +443,12 @@ class CardScreen extends StatelessWidget {
                       onPressed: () async {
                         //your custom configuration
                         if (MyAppState.language == 1) {
-                          print("English");
                           await ftts.setLanguage("en-IN");
                           await ftts.setVolume(1.0);
                         } else if (MyAppState.language == 2) {
-                          print("Tamil");
                           await ftts.setLanguage("ta-IN");
                           await ftts.setVolume(1.0);
                         } else if (MyAppState.language == 3) {
-                          print("Hindi");
                           await ftts.setLanguage("hi-IN");
                           await ftts.setVolume(1.0);
                         } else {
@@ -500,7 +497,6 @@ class CardScreen extends StatelessWidget {
                         onChanged: (bool state) {
                           appState
                               .getNext(context); // ← This instead of print().
-                          print('Current State of SWITCH IS: $state');
                         },
                         onDoubleTap: () {},
                         onSwipe: () {},
@@ -518,7 +514,6 @@ class CardScreen extends StatelessWidget {
                         iconOff: Icons.alarm_off,
                         textSize: 16.0,
                         onChanged: (bool state) {
-                          print(state);
                           if (state == false) {
                             timerRunning = false;
                             appState.reDraw();
@@ -529,7 +524,6 @@ class CardScreen extends StatelessWidget {
                             appState._startTimer(context);
                           }
                           //Use it to manage the different states
-                          print('Current State of SWITCH IS: $state');
                         },
                         onDoubleTap: () {},
                         onSwipe: () {},
@@ -589,10 +583,8 @@ class BigCard extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
-  int _selectedNumber = 3;
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -641,11 +633,9 @@ class SettingsPage extends StatelessWidget {
                         min: 1,
                         max: 100,
                         onIncrement: (num value) {
-                          print(value);
                           timerTemp = value.toInt();
                         },
                         onDecrement: (num value) {
-                          print(value);
                           timerTemp = value.toInt();
                         },
                       ),
@@ -659,7 +649,6 @@ class SettingsPage extends StatelessWidget {
                   onPressed: () {
                     timerInterval = timerTemp;
                     timerTemp = timerInterval;
-                    print('button pressed!');
                     final snackBar = const SnackBar(
                       content: Text('Saved!'),
                     );
@@ -785,9 +774,9 @@ class PrivacyScreen extends StatelessWidget {
               color: const Color.fromARGB(100, 22, 44, 33),
               margin: const EdgeInsets.all(20),
               padding: const EdgeInsets.all(10),
-              child: Column(
+              child: const Column(
                 children: [
-                  const LimitedBox(
+                  LimitedBox(
                     maxHeight: 400,
                     maxWidth: 400,
                     child: Text(
@@ -798,8 +787,8 @@ class PrivacyScreen extends StatelessWidget {
                         ),
                         "We do not collect any personal information from our users. Our app is an offline learning app, that doesn't require any account, and stores only field state on the user's device. We don't have any server and don't transfer the data anywhere, so it's fully offline."),
                   ),
-                  const SizedBox(height: 10),
-                  const LimitedBox(
+                  SizedBox(height: 10),
+                  LimitedBox(
                     maxHeight: 320,
                     maxWidth: 400,
                     child: Text(
