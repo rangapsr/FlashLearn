@@ -17,7 +17,8 @@ int timerTemp = 0;
 List<String> englishLetters = [];
 List<String> englishLevel1 = [];
 List<String> englishLevel2 = [];
-List<String> englishAdvance = [];
+List<String> englishAdvanced1 = [];
+List<String> englishAdvanced2 = [];
 List<String> mathsTables = [];
 List<String> tamilLetters = [];
 List<String> hindiLetters = [];
@@ -45,8 +46,11 @@ Future<void> loadAsset() async {
   temp = await rootBundle.loadString('assets/english_basics_2.txt');
   englishLevel2 = temp.toString().split('\n');
 
-  temp = await rootBundle.loadString('assets/english_advance.txt');
-  englishAdvance = temp.toString().split('\n');
+  temp = await rootBundle.loadString('assets/english_advanced_1.txt');
+  englishAdvanced1 = temp.toString().split('\n');
+
+  temp = await rootBundle.loadString('assets/english_advanced_2.txt');
+  englishAdvanced2 = temp.toString().split('\n');
 
   temp = await rootBundle.loadString('assets/tamil_letters.txt');
   tamilLetters = temp.toString().split('\n');
@@ -243,22 +247,36 @@ class MyHomePage extends StatelessWidget {
                   _navigateToNextScreen(context);
                 },
               ),
-
               const SizedBox(height: 15),
               ElevatedButton(
                 child: const Text(
-                  'Advanced',
+                  'Advanced 1',
                   style: TextStyle(fontSize: 18.0),
                 ),
                 onPressed: () {
                   initVariables();
-                  items = List.from(englishAdvance);
-                  cachedList = List.from(englishAdvance);
+                  items = List.from(englishAdvanced1);
+                  cachedList = List.from(englishAdvanced1);
                   MyAppState.current = items[index];
                   MyAppState.language = 1;
                   _navigateToNextScreen(context);
                 },
-              ),              
+              ),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                child: const Text(
+                  'Advanced 2',
+                  style: TextStyle(fontSize: 18.0),
+                ),
+                onPressed: () {
+                  initVariables();
+                  items = List.from(englishAdvanced2);
+                  cachedList = List.from(englishAdvanced2);
+                  MyAppState.current = items[index];
+                  MyAppState.language = 1;
+                  _navigateToNextScreen(context);
+                },
+              ),
               const SizedBox(height: 15),
               ElevatedButton(
                 child: const Text(
