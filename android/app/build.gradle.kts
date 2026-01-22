@@ -14,9 +14,9 @@ android {
     defaultConfig {
         applicationId = "com.flashit"
         minSdk = flutter.minSdkVersion // Updated to the latest recommended minimum SDK version
-        targetSdk = 34 // Updated to the latest target SDK version
-        versionCode = 1
-        versionName = "1.0.0"
+        targetSdk = 35 // Updated to the latest target SDK version
+        versionCode = 16
+        versionName = "16.0.0"
     }
 
     compileOptions {

@@ -66,7 +66,7 @@ void loadTextFiles() {
   loadAsset();
 }
 
-initVariables() {
+void initVariables() {
   index = 0;
   timerTemp = timerInterval;
   items = [];
@@ -182,6 +182,8 @@ class MyAppState extends ChangeNotifier {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -335,7 +337,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -446,6 +448,9 @@ class MyDrawer extends StatelessWidget {
 class CardScreen extends StatelessWidget {
   @override
   FlutterTts ftts = FlutterTts();
+
+  CardScreen({super.key});
+  @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
     //var output = appState.current; // ← Add this
@@ -621,6 +626,8 @@ class BigCard extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -719,6 +726,8 @@ class SettingsPage extends StatelessWidget {
 }
 
 class AboutScreen extends StatelessWidget {
+  const AboutScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -790,6 +799,8 @@ class AboutScreen extends StatelessWidget {
 }
 
 class PrivacyScreen extends StatelessWidget {
+  const PrivacyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
